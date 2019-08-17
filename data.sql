@@ -1,6 +1,5 @@
-CREATE DATABASE IF NOT EXISTS sql_training;
-
 #「図1.8::店舗テーブルのサンプル」を作成
+DROP TABLE IF EXISTS Shops;
 CREATE TABLE Shops (
  shop_id    CHAR(5) NOT NULL,
  shop_name  VARCHAR(64),
@@ -70,6 +69,7 @@ INSERT INTO Shops (shop_id, shop_name, rating, area) VALUES ('00059', 'CCC商店
 INSERT INTO Shops (shop_id, shop_name, rating, area) VALUES ('00060', '☆☆商店', 1, '東京都');
 
 #「図1.14::予約管理テーブルのサンプル」を作成
+DROP TABLE IF EXISTS Reservations;
 CREATE TABLE Reservations (
  reserve_id    INTEGER  NOT NULL,
  shop_id       CHAR(5),
@@ -88,6 +88,7 @@ INSERT INTO Reservations (reserve_id, shop_id, reserve_name) VALUES (9, '00007',
 INSERT INTO Reservations (reserve_id, shop_id, reserve_name) VALUES (10,'00010', 'Jさん');
 
 #「図2.1::住所テーブルのサンプル」を作成
+DROP TABLE IF EXISTS Address;
 CREATE TABLE Address
 (name       VARCHAR(32) NOT NULL,
  phone_nbr  VARCHAR(32) ,
@@ -107,6 +108,7 @@ INSERT INTO Address VALUES('佐藤',	'090-1922-XXXX',	'三重県',	'女',	25);
 INSERT INTO Address VALUES('鈴木',	'090-0001-XXXX',	'和歌山県',	'男',	32);
 
 #「図2.7::Address2テーブル」を作成
+DROP TABLE IF EXISTS Address2;
 CREATE TABLE Address2
 (name       VARCHAR(32) NOT NULL,
  phone_nbr  VARCHAR(32) ,
@@ -131,6 +133,7 @@ INSERT INTO Address2 (name, phone_nbr, address, sex, age)
               ('鈴木', '090-0001-XXXX', '和歌山県', '男', 32);
 
 #「図3.1::商品テーブルのサンプル」を作成
+DROP TABLE IF EXISTS Items;
 CREATE TABLE Items
 (item_id     INTEGER  NOT NULL,
  year     INTEGER  NOT NULL,
@@ -153,6 +156,7 @@ INSERT INTO Items VALUES(102,	2002,	'ナイフ'	,550,	577);
 INSERT INTO Items VALUES(102,	2003,	'ナイフ'	,400,	420);
 
 #「図3.7::人口テーブルのサンプル」を作成
+DROP TABLE IF EXISTS Population;
 CREATE TABLE Population
 (prefecture VARCHAR(32),
  sex        CHAR(1),
@@ -171,6 +175,7 @@ INSERT INTO Population VALUES('福岡', '1', 20);
 INSERT INTO Population VALUES('福岡', '2',200);
 
 #「図3.12::社員テーブルのサンプル」を作成
+DROP TABLE IF EXISTS Employees;
 CREATE TABLE Employees
 (emp_id    CHAR(3)  NOT NULL,
  team_id   INTEGER  NOT NULL,
@@ -191,6 +196,7 @@ INSERT INTO Employees VALUES('205',	1,	'Kim',	'商品企画');
 INSERT INTO Employees VALUES('205',	2,	'Kim',	'開発');
 
 #「図3.16::ThreeElementsテーブルのサンプル」を作成
+DROP TABLE IF EXISTS ThreeElements;
 CREATE TABLE ThreeElements
 (k      CHAR(8),
  name   VARCHAR(32),
@@ -215,6 +221,7 @@ CREATE INDEX IDX_2 ON ThreeElements (date_2, flg_2) ;
 CREATE INDEX IDX_3 ON ThreeElements (date_3, flg_3) ;
 
 #「図4.1::非集約テーブルのサンプル」を作成
+DROP TABLE IF EXISTS NonAggTbl;
 CREATE TABLE NonAggTbl
 (id VARCHAR(32) NOT NULL,
  data_type CHAR(1) NOT NULL,
@@ -237,6 +244,7 @@ INSERT INTO NonAggTbl VALUES('Beth',   'B',  435,   0,    183, NULL,    4,   325
 INSERT INTO NonAggTbl VALUES('Beth',   'C',  96,  128,   NULL,    0,    0,    12);
 
 # 「図4.5::年齢別価格テーブルのサンプル」を作成
+DROP TABLE IF EXISTS PriceByAge;
 CREATE TABLE PriceByAge
 (product_id VARCHAR(32) NOT NULL,
  low_age    INTEGER NOT NULL,
@@ -254,6 +262,7 @@ INSERT INTO PriceByAge VALUES('製品3',  71 ,  100 ,  1000);
 INSERT INTO PriceByAge VALUES('製品4',  0  ,  99  ,  8900);
 
 #「図4.7::ホテルテーブルのサンプル」を作成
+DROP TABLE IF EXISTS HotelRooms;
 CREATE TABLE HotelRooms
 (room_nbr	INTEGER,
  start_date DATE,
@@ -269,6 +278,7 @@ INSERT INTO HotelRooms VALUES(202,	'2008-02-11',	'2008-02-12');
 INSERT INTO HotelRooms VALUES(303,	'2008-02-03',	'2008-02-17');
 
 #「図4.8::人物テーブルのサンプル」を作成
+DROP TABLE IF EXISTS Persons;
 CREATE TABLE Persons
 (name   VARCHAR(8) NOT NULL,
  age    INTEGER NOT NULL,
@@ -288,6 +298,7 @@ INSERT INTO Persons VALUES('Dawson',  25,  182,  90);
 INSERT INTO Persons VALUES('Donald',  30,  176,  53);
 
 #「図5.1::売り上げ計算を行うテーブルのサンプル」を作成
+DROP TABLE IF EXISTS Sales;
 CREATE TABLE Sales
 (company CHAR(1) NOT NULL,
  year    INTEGER NOT NULL , 
@@ -308,6 +319,7 @@ INSERT INTO Sales VALUES ('C', 2006, 38);
 INSERT INTO Sales VALUES ('C', 2010, 35);
 
 # リスト5.5 郵便番号テーブルの定義
+DROP TABLE IF EXISTS PostalCode;
 CREATE TABLE PostalCode
 (pcode CHAR(7),
  district_name VARCHAR(256),
@@ -321,6 +333,7 @@ INSERT INTO PostalCode VALUES ('4103213',  '静岡県伊豆市青羽根');
 INSERT INTO PostalCode VALUES ('4380824',  '静岡県磐田市赤池');
 
 # リスト5.9 郵便番号の履歴テーブルの定義
+DROP TABLE IF EXISTS PostalHistory;
 CREATE TABLE PostalHistory
 (name  CHAR(1),
  pcode CHAR(7),
@@ -335,6 +348,7 @@ INSERT INTO PostalHistory VALUES ('C', '4103213', '4380824');
 INSERT INTO PostalHistory VALUES ('C', '4380824', NULL     );
 
 # リスト5.12 郵便番号の履歴テーブル2の定義
+DROP TABLE IF EXISTS PostalHistory2;
 CREATE TABLE PostalHistory2
 (name  CHAR(1),
  pcode CHAR(7),
@@ -353,12 +367,14 @@ INSERT INTO PostalHistory2 VALUES ('C', '4103213', 0,   27);
 INSERT INTO PostalHistory2 VALUES ('C', '4380824', 9,   18);
 
 #「リスト6.1::クロス結合を行うサンプルテーブル」を作成
+DROP TABLE IF EXISTS Employees2;
 CREATE TABLE Employees2
 (emp_id CHAR(8),
  emp_name VARCHAR(32),
  dept_id CHAR(2),
      CONSTRAINT pk_emp PRIMARY KEY(emp_id));
 
+DROP TABLE IF EXISTS Departments;
 CREATE TABLE Departments
 (dept_id CHAR(2),
  dept_name VARCHAR(32),
@@ -379,6 +395,7 @@ INSERT INTO Departments VALUES('12',	'開発');
 INSERT INTO Departments VALUES('13',	'営業');
 
 #「図6.5::自己結合を解説するための数字テーブル」を作成
+DROP TABLE IF EXISTS Digits;
 CREATE TABLE Digits
 (digit INTEGER PRIMARY KEY);
 
@@ -399,16 +416,20 @@ SELECT D1.digit + (D2.digit * 10) AS seq
   FROM Digits D1 CROSS JOIN Digits D2;
 
 #「三角結合を解説するためのテーブル」を作成
+DROP TABLE IF EXISTS Table_A;
 CREATE TABLE Table_A
 (col_a CHAR(1));
 
+DROP TABLE IF EXISTS Table_B;
 CREATE TABLE Table_B
 (col_b CHAR(1));
 
+DROP TABLE IF EXISTS Table_C;
 CREATE TABLE Table_C
 (col_c CHAR(1));
 
 #「リスト7.1::購入明細テーブル」を作成
+DROP TABLE IF EXISTS Receipts;
 CREATE TABLE Receipts
 (cust_id   CHAR(1) NOT NULL, 
  seq   INTEGER NOT NULL, 
@@ -430,6 +451,7 @@ INSERT INTO Receipts VALUES ('C',   70  ,50     );
 INSERT INTO Receipts VALUES ('D',   3   ,2000   );
 
 # リスト7.7 会社テーブルの定義
+DROP TABLE IF EXISTS Companies;
 CREATE TABLE Companies
 (co_cd      CHAR(3) NOT NULL, 
  district   CHAR(1) NOT NULL, 
@@ -441,6 +463,7 @@ INSERT INTO Companies VALUES('003', 'C');
 INSERT INTO Companies VALUES('004', 'D'); 
 
 # リスト7.8 事業所テーブルの定義
+DROP TABLE IF EXISTS Shops2;
 CREATE TABLE Shops2
 (co_cd      CHAR(3) NOT NULL, 
  shop_id    CHAR(3) NOT NULL, 
@@ -460,6 +483,7 @@ INSERT INTO Shops2 VALUES('003', '4',   200,  'Y');
 INSERT INTO Shops2 VALUES('004', '1',   999,  'Y');
 
 # リスト8.1 体重テーブルの定義
+DROP TABLE IF EXISTS Weights;
 CREATE TABLE Weights
 (student_id	CHAR(4) PRIMARY KEY,
  weight     INTEGER);
@@ -473,6 +497,7 @@ INSERT INTO Weights VALUES('C563',	72);
 INSERT INTO Weights VALUES('C345',	72);
 
 # リスト8.4 体重テーブル2の定義
+DROP TABLE IF EXISTS Weights2;
 CREATE TABLE Weights2
 (class      INTEGER NOT NULL,
  student_id CHAR(4) NOT NULL,
@@ -488,6 +513,7 @@ INSERT INTO Weights2 VALUES(2, '102', 73);
 INSERT INTO Weights2 VALUES(2, '103', 73);
 
 # リスト8.9 体重テーブル3（連番列を埋めたい）
+DROP TABLE IF EXISTS Weights3;
 CREATE TABLE Weights3
 (class      INTEGER NOT NULL,
  student_id CHAR(4) NOT NULL,
@@ -504,6 +530,7 @@ INSERT INTO Weights3 VALUES(2, '102', 73, NULL);
 INSERT INTO Weights3 VALUES(2, '103', 73, NULL);
 
 # リスト8.15 連番テーブルの定義
+DROP TABLE IF EXISTS Numbers;
 CREATE TABLE Numbers( num INTEGER PRIMARY KEY);
 
 INSERT INTO Numbers VALUES(1);
@@ -515,6 +542,7 @@ INSERT INTO Numbers VALUES(9);
 INSERT INTO Numbers VALUES(12);
 
 # リスト9.1 OmitTblテーブルの定義
+DROP TABLE IF EXISTS OmitTbl;
 CREATE TABLE OmitTbl
 (keycol CHAR(8) NOT NULL,
  seq    INTEGER NOT NULL,
@@ -535,12 +563,14 @@ INSERT INTO OmitTbl VALUES ('B', 5, NULL);
 INSERT INTO OmitTbl VALUES ('B', 6, NULL);
 
 # リスト9.4 行持ちの点数テーブルの定義
+DROP TABLE IF EXISTS ScoreRows;
 CREATE TABLE ScoreRows
 (student_id CHAR(4)    NOT NULL,
  subject    VARCHAR(8) NOT NULL,
  score      INTEGER ,
   CONSTRAINT pk_ScoreRows PRIMARY KEY(student_id, subject));
 
+DROP TABLE IF EXISTS ScoreCols;
 CREATE TABLE ScoreCols
 (student_id CHAR(4)    NOT NULL,
  score_en      INTEGER ,
@@ -563,6 +593,7 @@ INSERT INTO ScoreCols VALUES ('C003',	NULL, NULL, NULL);
 INSERT INTO ScoreCols VALUES ('D004',	NULL, NULL, NULL);
 
 # リスト9.8 ScoreColsNNテーブルの定義
+DROP TABLE IF EXISTS ScoreColsNN;
 CREATE TABLE ScoreColsNN
 (student_id CHAR(4) NOT NULL,
  score_en INTEGER NOT NULL,
@@ -576,6 +607,7 @@ INSERT INTO ScoreColsNN VALUES ('C003', 0, 0, 0);
 INSERT INTO ScoreColsNN VALUES ('D004', 0, 0, 0);
 
 # リスト9.15 更新元の株価テーブルの定義
+DROP TABLE IF EXISTS Stocks;
 CREATE TABLE Stocks
 (brand      VARCHAR(8) NOT NULL,
  sale_date  DATE       NOT NULL,
@@ -594,6 +626,7 @@ INSERT INTO Stocks VALUES ('D産業', '2008-06-06', 4800);
 INSERT INTO Stocks VALUES ('D産業', '2008-12-01', 5100);
 
 # リスト9.19 Ordersテーブルの定義
+DROP TABLE IF EXISTS Orders;
 CREATE TABLE Orders
 ( order_id INTEGER NOT NULL,
   order_shop VARCHAR(32) NOT NULL,
@@ -609,6 +642,7 @@ INSERT INTO Orders VALUES (10004, '青森', '相原酒店',   '2011/8/22');
 INSERT INTO Orders VALUES (10005, '長野', '宮元雄介',   '2011/8/29');
 
 # リスト9.20 OrderReceiptsテーブルの定義
+DROP TABLE IF EXISTS OrderReceipts;
 CREATE TABLE OrderReceipts
 ( order_id INTEGER NOT NULL,
   order_receipt_id INTEGER NOT NULL,
@@ -630,6 +664,7 @@ INSERT INTO OrderReceipts VALUES (10005, 1, '飲料水',         '2011/8/30');
 INSERT INTO OrderReceipts VALUES (10005, 2, '菓子詰め合わせ', '2011/8/30');
 
 # リスト9.25 score列にNOT NULL制約を付けたテーブル定義
+DROP TABLE IF EXISTS ScoreRowsNN;
 CREATE TABLE ScoreRowsNN
 (student_id CHAR(4)    NOT NULL,
  subject    VARCHAR(8) NOT NULL,
@@ -646,6 +681,7 @@ INSERT INTO ScoreRowsNN VALUES ('C003', '国語', 0);
 INSERT INTO ScoreRowsNN VALUES ('C003', '社会', 0);
 
 # リスト10.1 注文テーブルの定義
+DROP TABLE IF EXISTS Orders2;
 CREATE TABLE Orders2
 (order_id  CHAR(8) NOT NULL,
  shop_id   CHAR(4) NOT NULL,
@@ -655,6 +691,7 @@ CREATE TABLE Orders2
  CONSTRAINT pk_Orders PRIMARY KEY(order_id));
 
 # リスト10.11 データマート
+DROP TABLE IF EXISTS OrderMart;
 CREATE TABLE OrderMart
 (order_id     CHAR(4) NOT NULL,
  receive_date DATE NOT NULL);
